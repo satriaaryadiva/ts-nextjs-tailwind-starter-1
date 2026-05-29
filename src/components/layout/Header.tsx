@@ -22,7 +22,7 @@ export default function Header() {
     }
     return () => {
       document.body.style.overflow = 'unset';
-    }
+    };
   }, [open]);
 
   React.useEffect(() => {
@@ -33,8 +33,8 @@ export default function Header() {
     <header className='sticky top-0 z-50 border-b border-cream-dark/40 bg-cream/80 backdrop-blur-md transition-all duration-300'>
       <div className='layout flex h-16 items-center justify-between md:h-20'>
         {/* Logo Brand */}
-        <Link 
-          href='/' 
+        <Link
+          href='/'
           className='group font-display text-lg tracking-wide md:text-xl text-charcoal transition-colors hover:text-rose-dark'
         >
           Angelia Beauty{' '}
@@ -52,20 +52,26 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative text-sm tracking-wide transition-colors duration-200 py-2',
-                  'hover:text-rose-dark focus-visible:text-rose-dark outline-none',
-                  isActive ? 'text-rose-dark font-medium' : 'text-charcoal-light'
+                  'relative text-sm tracking-wide border-2 border-black transition-colors duration-200 p-2',
+                  'hover:text-rose-dark  focus-visible:text-rose-dark outline-none',
+                  isActive
+                    ? 'text-rose-dark font-medium'
+                    : 'text-charcoal-light',
                 )}
               >
                 {link.label}
                 {/* Underline aesthetic untuk link yang aktif */}
                 {isActive && (
-                  <span className='absolute bottom-0 left-0 h-[2px] w-full bg-rose-dark rounded-full' />
+                  <span className='absolute bottom-0 left-0 h-[4px] w-full bg-rose-dark rounded-full' />
                 )}
               </Link>
             );
           })}
-          <Button href='/booking' size='sm' className='shadow-sm hover:shadow-md transition-shadow'>
+          <Button
+            href='/booking'
+            size='sm'
+            className='shadow-sm hover:shadow-md transition-shadow'
+          >
             Booking
           </Button>
         </nav>
@@ -77,7 +83,17 @@ export default function Header() {
           aria-label={open ? 'Tutup menu' : 'Buka menu'}
           onClick={() => setOpen(!open)}
         >
-          {open ? <X size={24} className="animate-in fade-in zoom-in-75 duration-150" /> : <Menu size={24} className="animate-in fade-in zoom-in-75 duration-150" />}
+          {open ? (
+            <X
+              size={24}
+              className='animate-in fade-in zoom-in-75 duration-150'
+            />
+          ) : (
+            <Menu
+              size={24}
+              className='animate-in fade-in zoom-in-75 duration-150'
+            />
+          )}
         </button>
       </div>
 
@@ -95,7 +111,7 @@ export default function Header() {
                     'rounded-xl px-4 py-3.5 text-base font-medium tracking-wide transition-all duration-200',
                     isActive
                       ? 'bg-rose-dark/10 text-rose-dark font-semibold'
-                      : 'text-charcoal-light hover:bg-cream-dark/10 hover:text-charcoal'
+                      : 'text-charcoal-light hover:bg-cream-dark/10 hover:text-charcoal',
                   )}
                 >
                   {link.label}
@@ -103,7 +119,10 @@ export default function Header() {
               );
             })}
             <div className='mt-auto pt-6 border-t border-cream-dark/20'>
-              <Button href='/booking' className='w-full py-4 text-base shadow-sm'>
+              <Button
+                href='/booking'
+                className='w-full py-4 text-base shadow-sm'
+              >
                 Booking Sekarang
               </Button>
             </div>

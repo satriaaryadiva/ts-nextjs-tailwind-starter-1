@@ -29,7 +29,12 @@ export default function Hero() {
           <Button href='/booking' variant='primary' size='lg'>
             Booking Sekarang
           </Button>
-          <Button href='/portofolio' variant='outline' size='lg' className='border-cream text-cream hover:bg-cream hover:text-charcoal'>
+          <Button
+            href='/portofolio'
+            variant='outline'
+            size='lg'
+            className='border-cream text-cream hover:bg-cream hover:text-charcoal'
+          >
             Lihat Portofolio
           </Button>
         </div>

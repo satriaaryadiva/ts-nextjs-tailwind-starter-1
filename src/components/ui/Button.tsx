@@ -15,8 +15,7 @@ type ButtonProps = {
 );
 
 const variants = {
-  primary:
-    'bg-charcoal text-cream hover:bg-charcoal/90 border border-charcoal',
+  primary: 'bg-charcoal text-cream hover:bg-charcoal/90 border border-charcoal',
   outline:
     'bg-transparent text-charcoal border border-charcoal hover:bg-charcoal hover:text-cream',
   ghost: 'bg-transparent text-charcoal hover:bg-cream-dark',
@@ -40,7 +39,7 @@ export default function Button({
     'inline-flex items-center justify-center font-medium uppercase transition-colors duration-200',
     variants[variant],
     sizes[size],
-    className
+    className,
   );
 
   if (href) {

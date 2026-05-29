@@ -22,16 +22,12 @@ export default function BookingSummary({ state }: { state: BookingState }) {
         <div>
           <dt className='text-charcoal-light'>Acara</dt>
           <dd className='text-charcoal font-medium'>
-            {state.eventType
-              ? eventTypeLabels[state.eventType]
-              : '—'}
+            {state.eventType ? eventTypeLabels[state.eventType] : '—'}
           </dd>
         </div>
         <div>
           <dt className='text-charcoal-light'>Tanggal</dt>
-          <dd className='text-charcoal font-medium'>
-            {state.date || '—'}
-          </dd>
+          <dd className='text-charcoal font-medium'>{state.date || '—'}</dd>
         </div>
         <div>
           <dt className='text-charcoal-light'>Lokasi</dt>

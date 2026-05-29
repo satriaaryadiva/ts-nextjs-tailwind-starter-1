@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {    Mail, MapPin, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import PageHero from '@/components/shared/PageHero';
 import Button from '@/components/ui/Button';
@@ -7,7 +7,8 @@ import { siteConfig } from '@/constant/config';
 
 export const metadata: Metadata = {
   title: 'Kontak',
-  description: 'Hubungi Angelia Beauty MUA via WhatsApp, Instagram, atau email.',
+  description:
+    'Hubungi Angelia Beauty MUA via WhatsApp, Instagram, atau email.',
 };
 
 export default function KontakPage() {
@@ -41,7 +42,6 @@ export default function KontakPage() {
             rel='noopener noreferrer'
             className='flex items-center gap-4 rounded-sm border border-cream-dark bg-white p-6 transition-shadow hover:shadow-md'
           >
-            
             <div>
               <p className='font-medium text-charcoal'>Instagram</p>
               <p className='text-charcoal-light text-sm'>

@@ -53,7 +53,6 @@ function IphoneShowcase() {
         {/* iPhone 17 frame */}
         <div className='rounded-[3rem] border-2 border-black bg-black p-1.5 shadow-[8px_8px_0_0_#000]'>
           <div className='relative aspect-[9/16] overflow-hidden rounded-[3rem] bg-zinc-900'>
-            
             <video
               ref={videoRef}
               src='/video/preview.mp4'
@@ -71,7 +70,10 @@ function IphoneShowcase() {
             {!isPlaying && (
               <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/20'>
                 <div className='flex h-16 w-16 items-center justify-center rounded-full bg-white/40 backdrop-blur-md'>
-                  <Play className='ml-1 h-8 w-8 text-white' fill='currentColor' />
+                  <Play
+                    className='ml-1 h-8 w-8 text-white'
+                    fill='currentColor'
+                  />
                 </div>
               </div>
             )}
@@ -98,7 +100,7 @@ function IphoneShowcase() {
           >
             <X className='h-6 w-6' />
           </button>
-          
+
           <div className='relative max-h-[90vh] w-full max-w-5xl'>
             <video
               src='/video/preview.mp4'
@@ -118,19 +120,18 @@ function PillarBlock({ icon: Icon, title, text }: Pillar) {
   return (
     <article>
       <div className='mb-4 '>
-        <Icon
-          className=' text-black'
-          size={30}
-          strokeWidth={4}
-          aria-hidden
-        />
+        <Icon className=' text-black' size={30} strokeWidth={4} aria-hidden />
 
-
-        <h2 className='font-display font-bold tracking-wide text-bold uppercase text-black md:text-4xl'> {title}</h2>
+        <h2 className='font-display font-bold tracking-wide text-bold uppercase text-black md:text-4xl'>
+          {' '}
+          {title}
+        </h2>
       </div>
 
-      <p className='mt-3 text-sm leading-relaxed text-black
-      md:text-[0.9375rem] font-semibold'>
+      <p
+        className='mt-3 text-sm leading-relaxed text-black
+      md:text-[0.9375rem] font-semibold'
+      >
         {text}
       </p>
     </article>

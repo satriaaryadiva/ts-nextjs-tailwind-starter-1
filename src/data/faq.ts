@@ -8,8 +8,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: 'Berapa lama proses makeup pengantin?',
-    answer:
-      'Rata-rata 2–3 jam tergantung kompleksitas hair & aksesoris.',
+    answer: 'Rata-rata 2–3 jam tergantung kompleksitas hair & aksesoris.',
   },
   {
     question: 'Apakah semua paket include hair styling?',

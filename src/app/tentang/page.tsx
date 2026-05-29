@@ -43,9 +43,9 @@ export default function TentangPage() {
               &ldquo;ini aku, tapi lebih percaya diri&rdquo; di cermin.
             </p>
             <p className='text-charcoal-light mt-6 leading-relaxed'>
-              Dari wedding di rumah adat sampai prewedding di pinggir danau,
-              aku belajar bahwa makeup yang bagus bukan yang paling tebal —
-              tapi yang <strong>tahan cerita</strong>: peluh, air mata bahagia,
+              Dari wedding di rumah adat sampai prewedding di pinggir danau, aku
+              belajar bahwa makeup yang bagus bukan yang paling tebal — tapi
+              yang <strong>tahan cerita</strong>: peluh, air mata bahagia,
               flash, dan pelukan keluarga. Itu yang kubawa di setiap klien, di
               kota manapun di Indonesia.
             </p>

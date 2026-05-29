@@ -14,7 +14,9 @@ import { cn } from '@/lib/utils';
 
 export default function PortfolioGrid() {
   const [filter, setFilter] = React.useState<PortfolioCategory | 'all'>('all');
-  const [selectedItem, setSelectedItem] = React.useState<PortfolioItem | null>(null);
+  const [selectedItem, setSelectedItem] = React.useState<PortfolioItem | null>(
+    null,
+  );
 
   const filtered =
     filter === 'all'
@@ -31,7 +33,7 @@ export default function PortfolioGrid() {
             'rounded-full border px-6 py-2.5 text-sm font-medium tracking-wider uppercase transition-all duration-300',
             filter === 'all'
               ? 'border-black bg-black text-white shadow-md'
-              : 'border-gray-200 bg-white text-gray-600 hover:border-black hover:text-black'
+              : 'border-gray-200 bg-white text-gray-600 hover:border-black hover:text-black',
           )}
         >
           Semua
@@ -45,14 +47,14 @@ export default function PortfolioGrid() {
               'rounded-full border px-6 py-2.5 text-sm font-medium tracking-wider uppercase transition-all duration-300',
               filter === cat.slug
                 ? 'border-black bg-black text-white shadow-md'
-                : 'border-gray-200 bg-white text-gray-600 hover:border-black hover:text-black'
+                : 'border-gray-200 bg-white text-gray-600 hover:border-black hover:text-black',
             )}
           >
             {cat.label}
           </button>
         ))}
       </div>
-      
+
       {/* Grid Layout - Larger Items */}
       <div className='layout grid grid-cols-1 gap-6 pb-20 md:grid-cols-2 md:gap-8 md:auto-rows-[480px] lg:auto-rows-[600px]'>
         {filtered.map((item, index) => (
@@ -64,7 +66,7 @@ export default function PortfolioGrid() {
               // Pattern: 1 big, 2 half, 1 big...
               index % 3 === 0 ? 'md:col-span-2' : 'col-span-1',
               // Height for mobile
-              'h-[400px] md:h-auto'
+              'h-[400px] md:h-auto',
             )}
           >
             {item.type === 'video' ? (
@@ -92,15 +94,19 @@ export default function PortfolioGrid() {
                 sizes='(max-width: 768px) 100vw, 50vw'
               />
             )}
-            
+
             {/* Elegant Gradient Overlay */}
             <div className='absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80' />
-            
+
             {/* Animated Title & Caption inside image */}
             <figcaption className='absolute bottom-0 left-0 right-0 z-30 flex flex-col justify-end p-6 md:p-8'>
               <div className='translate-y-4 transform transition-transform duration-500 group-hover:translate-y-0'>
-                <h3 className='font-display text-2xl font-bold uppercase tracking-widest text-white drop-shadow-md md:text-3xl'>{item.category}</h3>
-                <p className='mt-2 text-sm text-gray-200 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:text-base'>{item.caption}</p>
+                <h3 className='font-display text-2xl font-bold uppercase tracking-widest text-white drop-shadow-md md:text-3xl'>
+                  {item.category}
+                </h3>
+                <p className='mt-2 text-sm text-gray-200 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:text-base'>
+                  {item.caption}
+                </p>
               </div>
             </figcaption>
           </figure>
@@ -117,7 +123,7 @@ export default function PortfolioGrid() {
           >
             <X className='h-6 w-6' />
           </button>
-          
+
           <div className='relative w-full max-w-6xl overflow-hidden rounded-3xl shadow-2xl'>
             <div className='relative flex h-[75vh] w-full items-center justify-center bg-zinc-900 md:h-[85vh]'>
               {selectedItem.type === 'video' ? (
@@ -139,8 +145,12 @@ export default function PortfolioGrid() {
               )}
             </div>
             <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8 text-white md:p-10'>
-              <h2 className='font-display text-4xl font-black uppercase tracking-widest drop-shadow-lg md:text-5xl'>{selectedItem.category}</h2>
-              <p className='mt-3 text-lg font-light text-gray-200 drop-shadow-md md:text-xl'>{selectedItem.caption}</p>
+              <h2 className='font-display text-4xl font-black uppercase tracking-widest drop-shadow-lg md:text-5xl'>
+                {selectedItem.category}
+              </h2>
+              <p className='mt-3 text-lg font-light text-gray-200 drop-shadow-md md:text-xl'>
+                {selectedItem.caption}
+              </p>
             </div>
           </div>
         </div>

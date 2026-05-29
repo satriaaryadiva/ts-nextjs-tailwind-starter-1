@@ -8,7 +8,7 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('heading', {
         name: /wujudkan hari impianmu/i,
-      })
+      }),
     ).toBeInTheDocument();
   });
 });

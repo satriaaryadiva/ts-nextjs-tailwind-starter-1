@@ -26,7 +26,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
             <ChevronDown
               className={cn(
                 'text-rose-dark shrink-0 transition-transform',
-                open === i && 'rotate-180'
+                open === i && 'rotate-180',
               )}
               size={20}
             />

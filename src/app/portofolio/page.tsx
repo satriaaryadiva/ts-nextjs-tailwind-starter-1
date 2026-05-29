@@ -20,7 +20,10 @@ export default function PortofolioPage() {
       <section className='pt-10'>
         <PortfolioGrid />
       </section>
-      <CtaBanner title='Suka salah satu look?' subtitle='Booking sekarang dan ceritakan acaramu.' />
+      <CtaBanner
+        title='Suka salah satu look?'
+        subtitle='Booking sekarang dan ceritakan acaramu.'
+      />
     </>
   );
 }

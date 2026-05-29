@@ -12,7 +12,9 @@ export default function CtaBanner({
   return (
     <section className='bg-charcoal py-16 text-cream md:py-20'>
       <div className='layout text-center'>
-        <h2 className='font-display text-3xl font-medium md:text-4xl'>{title}</h2>
+        <h2 className='font-display text-3xl font-medium md:text-4xl'>
+          {title}
+        </h2>
         <p className='mx-auto mt-4 max-w-xl text-cream/70'>{subtitle}</p>
         <div className='mt-8'>
           <Button

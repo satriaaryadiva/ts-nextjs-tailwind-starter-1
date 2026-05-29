@@ -87,7 +87,7 @@ export function normalizePhone(input: string): string {
 
 export function buildWhatsAppMessage(
   state: BookingState,
-  waDisplayPhone: string
+  waDisplayPhone: string,
 ): string {
   const pkg = getPackageBySlug(state.packageSlug);
   const addonLines = state.addons

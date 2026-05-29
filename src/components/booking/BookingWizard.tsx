@@ -142,7 +142,7 @@ export default function BookingWizard() {
       : `+${phone}`;
     const message = buildWhatsAppMessage(
       { ...state, phone: displayPhone },
-      displayPhone
+      displayPhone,
     );
     const url = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
@@ -166,7 +166,7 @@ export default function BookingWizard() {
               key={label}
               className={cn(
                 'hidden sm:inline',
-                i + 1 <= state.step && 'text-rose-dark font-medium'
+                i + 1 <= state.step && 'text-rose-dark font-medium',
               )}
             >
               {label}
@@ -209,7 +209,7 @@ export default function BookingWizard() {
                       'rounded-sm border p-6 text-left transition-all',
                       state.eventType === opt.value
                         ? 'border-black bg-black/5 shadow-sm'
-                        : 'border-cream-dark bg-white hover:border-black'
+                        : 'border-cream-dark bg-white hover:border-black',
                     )}
                   >
                     <span className='text-2xl'>{opt.emoji}</span>
@@ -220,7 +220,9 @@ export default function BookingWizard() {
                 ))}
               </div>
               {errors.eventType && (
-                <p className='text-rose-dark mt-2 text-sm'>{errors.eventType}</p>
+                <p className='text-rose-dark mt-2 text-sm'>
+                  {errors.eventType}
+                </p>
               )}
             </div>
           )}
@@ -314,7 +316,7 @@ export default function BookingWizard() {
                       'w-full rounded-sm border p-4 text-left transition-all',
                       state.packageSlug === pkg.slug
                         ? 'border-black bg-black/5'
-                        : 'border-cream-dark bg-white hover:border-black'
+                        : 'border-cream-dark bg-white hover:border-black',
                     )}
                   >
                     <div className='flex justify-between gap-4'>
@@ -347,7 +349,7 @@ export default function BookingWizard() {
                       'rounded-full border px-4 py-2 text-sm transition-colors',
                       state.addons.includes(addon.slug)
                         ? 'border-rose-dark bg-rose/20 text-charcoal'
-                        : 'border-cream-dark bg-white'
+                        : 'border-cream-dark bg-white',
                     )}
                   >
                     {addon.name} (+{formatRupiah(addon.price)})
@@ -372,7 +374,7 @@ export default function BookingWizard() {
                       'rounded-sm border px-4 py-4 text-left font-medium transition-all',
                       state.style === opt.value
                         ? 'border-black bg-black/5 text-charcoal'
-                        : 'border-cream-dark bg-white'
+                        : 'border-cream-dark bg-white',
                     )}
                   >
                     {styleLabels[opt.value]}
