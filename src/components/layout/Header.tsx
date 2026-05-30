@@ -55,7 +55,7 @@ export default function Header() {
                   'relative text-sm tracking-wide border-2 border-black transition-colors duration-200 p-2',
                   'hover:text-rose-dark  focus-visible:text-rose-dark outline-none',
                   isActive
-                    ? 'text-rose-dark font-medium'
+                    ? 'text-rose-dark bg-white font-bold  '
                     : 'text-charcoal-light',
                 )}
               >
