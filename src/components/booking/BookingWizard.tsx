@@ -19,7 +19,7 @@ import {
   provinces,
   styleLabels,
 } from '@/data/booking';
-import { addons, formatRupiah } from '@/data/packages';
+import { addons } from '@/data/packages';
 import { cn } from '@/lib/utils';
 
 const STEPS = [
@@ -34,7 +34,7 @@ const eventOptions: { value: EventType; label: string; emoji: string }[] = [
   { value: 'wedding', label: 'Wedding', emoji: '💍' },
   { value: 'prewedding', label: 'Prewedding', emoji: '📸' },
   { value: 'party', label: 'Party', emoji: '✨' },
-  { value: 'kursus', label: 'Kursus', emoji: '🎓' },
+  { value: 'photoshoot', label: 'Photoshoot', emoji: '📷' },
   { value: 'editorial', label: 'Editorial', emoji: '💄' },
   { value: 'other', label: 'Lainnya', emoji: '🌸' },
 ];
@@ -80,8 +80,8 @@ export default function BookingWizard() {
       next.packageSlug = paket;
       next.step = 3;
     }
-    if (tipe === 'kursus') {
-      next.eventType = 'kursus';
+    if (tipe === 'photoshoot') {
+      next.eventType = 'photoshoot';
       next.step = Math.max(next.step, 1);
     }
     if (event) {
@@ -319,15 +319,10 @@ export default function BookingWizard() {
                         : 'border-cream-dark bg-white hover:border-black',
                     )}
                   >
-                    <div className='flex justify-between gap-4'>
-                      <div>
-                        <p className='font-medium text-charcoal'>{pkg.name}</p>
-                        <p className='text-charcoal-light text-sm'>
-                          {pkg.description}
-                        </p>
-                      </div>
-                      <p className='text-rose-dark shrink-0 text-sm font-medium'>
-                        {formatRupiah(pkg.priceFrom)}
+                    <div>
+                      <p className='font-medium text-charcoal'>{pkg.name}</p>
+                      <p className='text-charcoal-light text-sm'>
+                        {pkg.description}
                       </p>
                     </div>
                   </button>
@@ -352,7 +347,7 @@ export default function BookingWizard() {
                         : 'border-cream-dark bg-white',
                     )}
                   >
-                    {addon.name} (+{formatRupiah(addon.price)})
+                    {addon.name}
                   </button>
                 ))}
               </div>

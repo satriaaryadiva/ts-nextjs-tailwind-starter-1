@@ -2,26 +2,27 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, MessageCircle, X } from 'lucide-react';
 import * as React from 'react';
 
 import Button from '@/components/ui/Button';
-import { navLinks } from '@/constant/config';
+import Logo from '@/components/ui/Logo';
+import { navLinks, siteConfig } from '@/constant/config';
 import { cn } from '@/lib/utils';
+
+const MOBILE_HEADER_H = 'top-24';
+const DESKTOP_HEADER_H = 'md:top-24';
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
 
-  // Mengunci scroll body saat menu mobile terbuka
+  const closeMenu = React.useCallback(() => setOpen(false), []);
+
   React.useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = open ? 'hidden' : '';
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [open]);
 
@@ -29,78 +30,39 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
+  React.useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, closeMenu]);
+
+  const waHref = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent('Halo Angelia Beauty MUA, saya ingin konsultasi.')}`;
+
   return (
-    <header className='sticky top-0 z-50 border-b border-cream-dark/40 bg-cream/80 backdrop-blur-md transition-all duration-300'>
-      <div className='layout flex h-16 items-center justify-between md:h-20'>
-        {/* Logo Brand */}
-        <Link
-          href='/'
-          className='group font-display text-lg tracking-wide md:text-xl text-charcoal transition-colors hover:text-rose-dark'
-        >
-          Angelia Beauty{' '}
-          <span className='ml-1 text-rose-dark text-xs font-normal tracking-widest uppercase transition-opacity group-hover:opacity-80'>
-            MUA
-          </span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className='hidden items-center gap-8 lg:flex'>
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative text-sm tracking-wide border-2 border-black transition-colors duration-200 p-2',
-                  'hover:text-rose-dark  focus-visible:text-rose-dark outline-none',
-                  isActive
-                    ? 'text-rose-dark bg-white font-bold  '
-                    : 'text-charcoal-light',
-                )}
-              >
-                {link.label}
-                {/* Underline aesthetic untuk link yang aktif */}
-                {isActive && (
-                  <span className='absolute bottom-0 left-0 h-[4px] w-full bg-rose-dark rounded-full' />
-                )}
-              </Link>
-            );
-          })}
-          <Button
-            href='/booking'
-            size='sm'
-            className='shadow-sm hover:shadow-md transition-shadow'
-          >
-            Booking
-          </Button>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          type='button'
-          className='p-2 -mr-2 text-charcoal hover:text-rose-dark transition-colors lg:hidden focus:outline-none'
-          aria-label={open ? 'Tutup menu' : 'Buka menu'}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? (
-            <X
-              size={24}
-              className='animate-in fade-in zoom-in-75 duration-150'
+    <>
+      <header className='sticky top-0 z-50 border-b-2 border-black bg-white/95 backdrop-blur-md'>
+        <div className='layout flex h-24 items-center justify-between gap-3'>
+          <div className='min-w-0 shrink'>
+            <Logo
+              variant='full'
+              size='lg'
+              priority
+              className='origin-left scale-150 lg:hidden'
             />
-          ) : (
-            <Menu
-              size={24}
-              className='animate-in fade-in zoom-in-75 duration-150'
+            <Logo
+              variant='full'
+              size='xl'
+              priority
+              className='hidden lg:inline-flex'
             />
-          )}
-        </button>
-      </div>
+          </div>
 
-      {/* Mobile Navigation Panel */}
-      {open && (
-        <div className='fixed inset-x-0 bottom-0 top-16 z-40 bg-cream/98 backdrop-blur-lg animate-in slide-in-from-top-5 duration-300 lg:hidden border-t border-cream-dark/20'>
-          <nav className='layout flex flex-col gap-2 py-6 h-[calc(100vh-4rem)] overflow-y-auto'>
+          <nav className='hidden items-center gap-6 lg:flex lg:gap-8'>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -108,27 +70,119 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'rounded-xl px-4 py-3.5 text-base font-medium tracking-wide transition-all duration-200',
+                    'border-2 border-transparent px-2 py-1.5 text-sm tracking-wide transition-colors duration-200 outline-none',
+                    'hover:border-black hover:text-black focus-visible:border-black',
                     isActive
-                      ? 'bg-rose-dark/10 text-rose-dark font-semibold'
-                      : 'text-charcoal-light hover:bg-cream-dark/10 hover:text-charcoal',
+                      ? 'border-black bg-black font-bold text-white'
+                      : 'text-charcoal-light',
                   )}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <div className='mt-auto pt-6 border-t border-cream-dark/20'>
-              <Button
-                href='/booking'
-                className='w-full py-4 text-base shadow-sm'
-              >
-                Booking Sekarang
-              </Button>
-            </div>
+            <Button href='/booking' size='sm'>
+              Booking
+            </Button>
           </nav>
+
+          <button
+            type='button'
+            className={cn(
+              'flex h-10 w-10 shrink-0 items-center justify-center border-2 border-black bg-white text-black transition-colors lg:hidden',
+              open && 'bg-black text-white',
+            )}
+            aria-expanded={open}
+            aria-controls='mobile-nav'
+            aria-label={open ? 'Tutup menu' : 'Buka menu'}
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            {open ? (
+              <X size={20} strokeWidth={2} />
+            ) : (
+              <Menu size={20} strokeWidth={2} />
+            )}
+          </button>
         </div>
+      </header>
+
+      {open && (
+        <button
+          type='button'
+          aria-label='Tutup menu'
+          className={cn(
+            'fixed inset-x-0 bottom-0 z-40 bg-black/40 backdrop-blur-[2px] lg:hidden',
+            MOBILE_HEADER_H,
+            DESKTOP_HEADER_H,
+          )}
+          onClick={closeMenu}
+        />
       )}
-    </header>
+
+      <div
+        id='mobile-nav'
+        className={cn(
+          'fixed inset-x-0 bottom-0 z-50 flex flex-col border-t-2 border-black bg-white transition-transform duration-300 ease-out lg:hidden',
+          MOBILE_HEADER_H,
+          DESKTOP_HEADER_H,
+          open ? 'translate-y-0' : 'pointer-events-none translate-y-full',
+        )}
+        aria-hidden={!open}
+      >
+        <nav className='layout flex flex-1 flex-col overflow-y-auto overscroll-contain py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]'>
+          <p className='mb-4 text-[10px] tracking-[0.3em] text-zinc-400 uppercase'>
+            Menu
+          </p>
+
+          <ul className='space-y-2'>
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={closeMenu}
+                    className={cn(
+                      'flex items-center justify-between border-2 px-4 py-3.5 transition-colors',
+                      isActive
+                        ? 'border-black bg-black font-semibold text-white shadow-[3px_3px_0_0_#000]'
+                        : 'border-zinc-200 bg-white text-charcoal hover:border-black',
+                    )}
+                  >
+                    <span className='font-display text-base tracking-wide uppercase md:text-lg'>
+                      {link.label}
+                    </span>
+                    <span className='text-[10px] tracking-[0.2em] text-zinc-400 tabular-nums'>
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className='mt-6 space-y-3 border-t-2 border-zinc-100 pt-6'>
+            <Button
+              href='/booking'
+              className='w-full border-2 border-black py-3.5 text-sm shadow-[4px_4px_0_0_#000]'
+              onClick={closeMenu}
+            >
+              Booking Sekarang
+            </Button>
+
+            <a
+              href={waHref}
+              target='_blank'
+              rel='noopener noreferrer'
+              onClick={closeMenu}
+              className='flex w-full items-center justify-center gap-2 border-2 border-black bg-white px-6 py-3.5 text-xs font-semibold tracking-[0.18em] text-black uppercase transition-colors hover:bg-black hover:text-white'
+            >
+              <MessageCircle size={16} aria-hidden />
+              WhatsApp
+            </a>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }

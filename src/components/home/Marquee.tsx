@@ -5,7 +5,7 @@ const items = [
   'Wedding',
   'Prewedding',
   'Party Glam',
-  'Kursus Makeup',
+  'Photoshoot',
   'Medan',
   'Seluruh Indonesia',
   '#AngeliaBeautyLook',

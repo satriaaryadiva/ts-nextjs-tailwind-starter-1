@@ -1,9 +1,9 @@
-'use client'; // Error components must be Client Components
+'use client';
 
+import { AlertCircle } from 'lucide-react';
 import * as React from 'react';
-import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import TextButton from '@/components/buttons/TextButton';
+import Button from '@/components/ui/Button';
 
 export default function Error({
   error,
@@ -13,26 +13,21 @@ export default function Error({
   reset: () => void;
 }) {
   React.useEffect(() => {
-    // eslint-disable-next-line no-console
     console.error(error);
   }, [error]);
 
   return (
-    <main>
-      <section className='bg-white'>
-        <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
-          <RiAlarmWarningFill
-            size={60}
-            className='drop-shadow-glow animate-flicker text-red-500'
-          />
-          <h1 className='mt-8 text-4xl md:text-6xl'>
-            Oops, something went wrong!
-          </h1>
-          <TextButton variant='basic' onClick={reset} className='mt-4'>
-            Try again
-          </TextButton>
-        </div>
-      </section>
-    </main>
+    <section className='layout flex min-h-[60vh] flex-col items-center justify-center py-20 text-center'>
+      <AlertCircle className='text-black' size={48} strokeWidth={1.5} />
+      <h1 className='font-display mt-6 text-2xl text-black md:text-3xl'>
+        Terjadi kesalahan
+      </h1>
+      <p className='text-charcoal-light mt-2 max-w-md text-sm'>
+        Maaf, ada yang tidak beres. Silakan coba lagi.
+      </p>
+      <Button onClick={reset} className='mt-8'>
+        Coba Lagi
+      </Button>
+    </section>
   );
 }

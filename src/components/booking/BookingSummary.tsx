@@ -2,15 +2,13 @@
 
 import {
   type BookingState,
-  calculateEstimate,
   eventTypeLabels,
   styleLabels,
 } from '@/data/booking';
-import { addons, formatRupiah, getPackageBySlug } from '@/data/packages';
+import { addons, getPackageBySlug } from '@/data/packages';
 
 export default function BookingSummary({ state }: { state: BookingState }) {
   const pkg = getPackageBySlug(state.packageSlug);
-  const estimate = calculateEstimate(state);
   const selectedAddons = state.addons
     .map((slug) => addons.find((a) => a.slug === slug))
     .filter(Boolean);
@@ -57,12 +55,11 @@ export default function BookingSummary({ state }: { state: BookingState }) {
         </div>
       </dl>
       <div className='border-charcoal/10 mt-6 border-t pt-4'>
-        <p className='text-charcoal-light text-xs'>Estimasi sementara</p>
-        <p className='font-display text-2xl text-charcoal'>
-          {pkg ? formatRupiah(estimate) : '—'}
+        <p className='text-charcoal-light text-xs tracking-wide uppercase'>
+          Harga
         </p>
-        <p className='text-charcoal-light mt-1 text-xs'>
-          Harga final setelah konfirmasi
+        <p className='mt-1 text-sm text-charcoal'>
+          Konsultasi & penawaran harga via WhatsApp setelah data dikirim.
         </p>
       </div>
     </div>

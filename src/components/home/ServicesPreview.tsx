@@ -1,9 +1,11 @@
 'use client';
 
-import * as React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+
 import Button from '@/components/ui/Button';
+import { siteImages } from '@/data/images';
 
 type ServiceCategoryPreview = {
   id: string;
@@ -16,56 +18,61 @@ type ServiceCategoryPreview = {
 
 const servicePreviews: ServiceCategoryPreview[] = [
   {
-    id: 'wedding',
-    name: 'Wedding Makeup',
-    hash: 'wedding',
+    id: 'Prewedding',
+    name: 'Prewedding',
+    hash: 'Prewedding',
     description:
-      'Riasan pengantin akad dan resepsi eksklusif yang dirancang khusus agar flawless, ringan, dan memancarkan pesona anggun seharian penuh.',
-    image:
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',
-    popularPackage: 'Full Day Bride',
+      'Riasan akad dan resepsi — natural glam, elegan, dan photo-ready untuk momen sakral pernikahanmu.',
+    image: '/images/IMG_0990.webp',
+    popularPackage: 'Akad Saja',
   },
   {
-    id: 'prewedding',
-    name: 'Prewedding & Engagement',
-    hash: 'prewedding',
+    id: 'Engagement ',
+    name: 'Engagement',
+    hash: ' ',
     description:
-      'Riasan natural glamor yang tahan lama dan photo-ready untuk sesi foto outdoor maupun indoor agar setiap potret tampak sempurna.',
-    image:
-      'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
-    popularPackage: 'Prewedding Look 2',
+      'Paket pengantin full day — trial makeup, standby seharian, dan pendampingan eksklusif hari-H.',
+    image: '/images/IMG_1035.webp',
+    popularPackage: ' Makeup',
+  },
+  {
+    id: 'Wedding',
+    name: 'Wedding',
+    hash: 'wedding',
+    description:
+      'Makeup & hair tahan lama untuk sesi prewedding dan engagement — outdoor maupun studio.',
+    image: '/images/IMG_0469.JPG.webp',
+    popularPackage: 'Look 2',
+  },
+  {
+    id: 'photoshoot',
+    name: 'Photoshoot',
+    hash: 'photoshoot',
+    description:
+      'Riasan photo-ready HD untuk content creator, branding, editorial, dan portofolio.',
+    image: '/images/IMG_1213.JPG.webp',
+    popularPackage: 'Full Session',
   },
   {
     id: 'party',
-    name: 'Party & Event Glam',
+    name: 'Party',
     hash: 'party',
     description:
-      'Sentuhan riasan glamor elegan untuk wisuda, pesta keluarga, bridesmaid, prom night, atau menghadiri momen perayaan formal lainnya.',
-    image:
-      'https://images.unsplash.com/photo-1522337094133-f37f5179a1be?w=800&q=80',
-    popularPackage: 'Party + Hair Styling',
-  },
-  {
-    id: 'kursus',
-    name: 'Kursus & Workshop',
-    hash: 'kursus',
-    description:
-      'Kelas privat kecantikan 1-on-1 dengan kurikulum personal dari tingkat dasar hingga materi tingkat lanjut untuk merintis karir sebagai profesional MUA.',
-    image:
-      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80',
-    popularPackage: 'Private MUA Lesson',
+      'Glam look untuk wisuda, pesta, prom, bridesmaid, dan acara formal lainnya.',
+    image: siteImages.services.party,
+    popularPackage: 'Party + Hair',
   },
 ];
 
 export default function ServicesPreview() {
   return (
-    <section className='relative overflow-hidden bg-white py-24 md:py-36'>
+    <section className='relative overflow-hidden bg-white py-14 md:py-20'>
       {/* Subtle top decoration grid/glow */}
       <div className='pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent' />
 
       <div className='layout relative z-10'>
         {/* Section Header */}
-        <div className='mb-16 flex flex-col items-center text-center md:mb-24'>
+        <div className='mb-10 flex flex-col items-center text-center md:mb-24'>
           <span className='mb-4 inline-block rounded-full border border-amber-200 bg-amber-50 px-5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-800 backdrop-blur-sm'>
             Layanan Kami
           </span>
@@ -79,20 +86,21 @@ export default function ServicesPreview() {
         </div>
 
         {/* Services Grid */}
-        <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+        <div className='grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5'>
           {servicePreviews.map((service) => (
             <Link
               key={service.id}
               href={`/layanan#${service.hash}`}
-              className='group relative flex h-[480px] flex-col justify-end overflow-hidden rounded-[2.5rem] bg-zinc-900 p-6 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-zinc-950/20 md:p-8'
+              className='group relative flex min-h-[420px] flex-col justify-end overflow-hidden border-2 border-black bg-zinc-900 p-5 shadow-[5px_5px_0_0_#000] transition-all duration-500 hover:shadow-[2px_2px_0_0_#000] sm:min-h-[460px] md:h-[460px] md:p-6'
             >
               {/* Background image overlay */}
               <div className='absolute inset-0 z-0 overflow-hidden'>
-                <img
+                <Image
                   src={service.image}
                   alt={service.name}
-                  className='h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110'
-                  loading='lazy'
+                  fill
+                  className='object-cover transition-transform duration-1000 ease-out group-hover:scale-110'
+                  sizes='(max-width: 1024px) 50vw, 25vw'
                 />
                 {/* Dark gradients to ensure text visibility */}
                 <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent transition-opacity duration-500 group-hover:opacity-95' />
@@ -101,7 +109,7 @@ export default function ServicesPreview() {
               {/* Card content */}
               <div className='relative z-10 flex flex-col justify-end text-white'>
                 {/* Popular package tag */}
-                <span className='mb-2 self-start rounded-full bg-white/10 px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-amber-300 backdrop-blur-sm transition-colors duration-300 group-hover:bg-amber-600 group-hover:text-white'>
+                <span className='mb-3 self-start rounded-full bg-white/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider text-amber-300 backdrop-blur-sm transition-colors duration-300 group-hover:bg-amber-600 group-hover:text-white'>
                   Terpopuler: {service.popularPackage}
                 </span>
 
@@ -109,17 +117,17 @@ export default function ServicesPreview() {
                   {service.name}
                 </h3>
 
-                {/* Smooth description reveal */}
-                <div className='grid grid-rows-[0fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr]'>
+                {/* Description — always visible on mobile, reveal on hover desktop */}
+                <div className='grid grid-rows-[1fr] transition-all duration-500 ease-in-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]'>
                   <div className='overflow-hidden'>
-                    <p className='mt-3 text-xs leading-relaxed text-zinc-300 opacity-0 transition-opacity duration-500 group-hover:opacity-100'>
+                    <p className='mt-3 text-xs leading-relaxed text-zinc-300 line-clamp-3 opacity-100 md:line-clamp-none md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100'>
                       {service.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Action indicator link */}
-                <div className='mt-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 group-hover:text-white transition-colors duration-300'>
+                <div className='mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 transition-colors duration-300 group-hover:text-white md:mt-5'>
                   <span>Lihat Selengkapnya</span>
                   <ArrowRight className='h-3.5 w-3.5 transform transition-transform duration-300 group-hover:translate-x-1.5' />
                 </div>
@@ -129,7 +137,7 @@ export default function ServicesPreview() {
         </div>
 
         {/* View All Services CTA */}
-        <div className='mt-20 text-center'>
+        <div className='mt-12 text-center md:mt-20'>
           <Button
             href='/layanan'
             variant='outline'

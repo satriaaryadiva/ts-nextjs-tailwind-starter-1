@@ -4,7 +4,7 @@ export type EventType =
   | 'wedding'
   | 'prewedding'
   | 'party'
-  | 'kursus'
+  | 'photoshoot'
   | 'editorial'
   | 'other';
 
@@ -53,7 +53,7 @@ export const eventTypeLabels: Record<EventType, string> = {
   wedding: 'Pernikahan / Wedding',
   prewedding: 'Prewedding / Engagement',
   party: 'Pesta / Party',
-  kursus: 'Kursus Makeup',
+  photoshoot: 'Photoshoot',
   editorial: 'Editorial / Content',
   other: 'Lainnya',
 };
@@ -93,7 +93,6 @@ export function buildWhatsAppMessage(
   const addonLines = state.addons
     .map((slug) => addons.find((a) => a.slug === slug)?.name)
     .filter(Boolean);
-  const estimate = calculateEstimate(state);
   const dateFormatted = state.date
     ? new Date(state.date + 'T12:00:00').toLocaleDateString('id-ID', {
         weekday: 'long',
@@ -125,18 +124,19 @@ Saya ingin konsultasi *booking* dengan detail berikut:
 📝 *Catatan:*
 ${state.notes || '-'}
 
-💰 *Estimasi (sementara):* ${formatRupiah(estimate)}
-*(Harga final setelah konfirmasi & kuota tanggal)*
+💬 *Harga & konfirmasi jadwal via WhatsApp setelah review detail di atas.*
 
 Terima kasih! Saya menunggu konfirmasinya.`;
 }
 
 export function getPackagesForEvent(eventType: EventType | '') {
   if (!eventType) return packages;
-  if (eventType === 'kursus')
-    return packages.filter((p) => p.category === 'kursus');
+  if (eventType === 'photoshoot')
+    return packages.filter((p) => p.category === 'photoshoot');
   if (eventType === 'wedding')
-    return packages.filter((p) => p.category === 'wedding');
+    return packages.filter(
+      (p) => p.category === 'wedding' || p.category === 'bride',
+    );
   if (eventType === 'prewedding')
     return packages.filter((p) => p.category === 'prewedding');
   if (eventType === 'party')

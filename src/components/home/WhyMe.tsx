@@ -55,7 +55,7 @@ function IphoneShowcase() {
           <div className='relative aspect-[9/16] overflow-hidden rounded-[3rem] bg-zinc-900'>
             <video
               ref={videoRef}
-              src='/video/preview.mp4'
+              src='/video/whyme.mp4'
               playsInline
               muted
               autoPlay
@@ -68,14 +68,7 @@ function IphoneShowcase() {
 
             {/* Play Icon Overlay */}
             {!isPlaying && (
-              <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/20'>
-                <div className='flex h-16 w-16 items-center justify-center rounded-full bg-white/40 backdrop-blur-md'>
-                  <Play
-                    className='ml-1 h-8 w-8 text-white'
-                    fill='currentColor'
-                  />
-                </div>
-              </div>
+              <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/20'></div>
             )}
 
             {/* Fullscreen Button */}
@@ -103,7 +96,7 @@ function IphoneShowcase() {
 
           <div className='relative max-h-[90vh] w-full max-w-5xl'>
             <video
-              src='/video/preview.mp4'
+              src='/video/whyme.mp4'
               controls
               autoPlay
               playsInline
@@ -122,7 +115,7 @@ function PillarBlock({ icon: Icon, title, text }: Pillar) {
       <div className='mb-4 '>
         <Icon className=' text-black' size={30} strokeWidth={4} aria-hidden />
 
-        <h2 className='font-display font-bold tracking-wide text-bold uppercase text-black md:text-4xl'>
+        <h2 className='font-display font-bold tracking-wide text-2xl text-bold uppercase text-black md:text-4xl'>
           {' '}
           {title}
         </h2>
@@ -149,7 +142,7 @@ export default function WhyMe() {
           </h2>
           <p className='mx-auto mt-2 max-w-2xl text-sm text-black md:font-semibold'>
             Alasan kamu memilih {siteConfig.instagramHandle} untuk mewujudkan
-            pernikahan impian:
+            pernikahan impian
           </p>
         </header>
 

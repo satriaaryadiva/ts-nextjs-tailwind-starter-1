@@ -5,6 +5,7 @@ import CtaBanner from '@/components/shared/CtaBanner';
 import PageHero from '@/components/shared/PageHero';
 import Button from '@/components/ui/Button';
 import { siteConfig } from '@/constant/config';
+import { siteImages } from '@/data/images';
 
 export const metadata: Metadata = {
   title: 'Tentang',
@@ -27,8 +28,8 @@ export default function TentangPage() {
         <div className='grid items-start gap-12 lg:grid-cols-2'>
           <div className='relative aspect-4/5 overflow-hidden rounded-sm'>
             <Image
-              src='https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80'
-              alt='Angelia Beauty MUA'
+              src={siteImages.about}
+              alt='Angelia Beauty MUA — makeup artist Medan'
               fill
               className='object-cover'
               sizes='(max-width: 1024px) 100vw, 50vw'

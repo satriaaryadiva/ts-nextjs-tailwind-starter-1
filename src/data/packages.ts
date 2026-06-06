@@ -1,9 +1,12 @@
+import { siteImages } from '@/data/images';
+
 export type PackageCategory =
   | 'wedding'
+  | 'bride'
   | 'prewedding'
   | 'party'
-  | 'other'
-  | 'kursus';
+  | 'photoshoot'
+  | 'other';
 
 export type Package = {
   slug: string;
@@ -28,8 +31,7 @@ export const packages: Package[] = [
       'Premium eyelashes & softlens',
     ],
     priceFrom: 2_500_000,
-    image:
-      'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=800&q=80',
+    image: siteImages.wedding1,
   },
   {
     slug: 'resepsi-saja',
@@ -43,13 +45,12 @@ export const packages: Package[] = [
       'Premium accessories placement',
     ],
     priceFrom: 3_000_000,
-    image:
-      'https://images.unsplash.com/photo-1591555200985-ac5d2bf6101c?w=800&q=80',
+    image: siteImages.wedding2,
   },
   {
     slug: 'full-day-bride',
     name: 'Full Day Bride',
-    category: 'wedding',
+    category: 'bride',
     description:
       'Pendampingan makeup eksklusif seharian penuh dari akad hingga pesta resepsi selesai.',
     includes: [
@@ -58,13 +59,12 @@ export const packages: Package[] = [
       'Standby seharian penuh di lokasi',
     ],
     priceFrom: 6_500_000,
-    image:
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',
+    image: siteImages.wedding1,
   },
   {
     slug: 'full-day-plus-2',
     name: 'Full Day + 2 Orang',
-    category: 'wedding',
+    category: 'bride',
     description:
       'Paket lengkap eksklusif untuk pengantin beserta dua orang terdekat (ibu / bridesmaid).',
     includes: [
@@ -73,13 +73,12 @@ export const packages: Package[] = [
       'Retouch ringan untuk semua',
     ],
     priceFrom: 9_500_000,
-    image:
-      'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80',
+    image: siteImages.wedding3,
   },
   {
     slug: 'trial-makeup',
     name: 'Trial Makeup',
-    category: 'wedding',
+    category: 'bride',
     description:
       'Sesi uji coba look makeup dan hair-styling sebelum hari pernikahan tiba agar tampilan sempurna.',
     includes: [
@@ -88,8 +87,7 @@ export const packages: Package[] = [
       'Rekomendasi skin prep',
     ],
     priceFrom: 750_000,
-    image:
-      'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80',
+    image: siteImages.wedding4,
   },
   {
     slug: 'prewed-look-1',
@@ -103,8 +101,7 @@ export const packages: Package[] = [
       'Softlens & custom look',
     ],
     priceFrom: 1_800_000,
-    image:
-      'https://images.unsplash.com/photo-1616166330003-8e550d199b26?w=800&q=80',
+    image: siteImages.prewed1,
   },
   {
     slug: 'prewed-look-2',
@@ -118,8 +115,7 @@ export const packages: Package[] = [
       'On location standby 4 jam',
     ],
     priceFrom: 3_200_000,
-    image:
-      'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
+    image: siteImages.prewed2,
   },
   {
     slug: 'prewed-half-day',
@@ -133,8 +129,7 @@ export const packages: Package[] = [
       'Unlimited retouch selama sesi',
     ],
     priceFrom: 4_500_000,
-    image:
-      'https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?w=800&q=80',
+    image: siteImages.prewed2,
   },
   {
     slug: 'party-glam',
@@ -148,8 +143,7 @@ export const packages: Package[] = [
       'Premium eyelashes',
     ],
     priceFrom: 850_000,
-    image:
-      'https://images.unsplash.com/photo-1522337094133-f37f5179a1be?w=800&q=80',
+    image: siteImages.party1,
   },
   {
     slug: 'party-hair',
@@ -163,8 +157,7 @@ export const packages: Package[] = [
       'Hair accessories placement',
     ],
     priceFrom: 1_200_000,
-    image:
-      'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',
+    image: siteImages.party2,
   },
   {
     slug: 'party-group-3',
@@ -178,8 +171,7 @@ export const packages: Package[] = [
       'Selesai tepat waktu',
     ],
     priceFrom: 2_400_000,
-    image:
-      'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80',
+    image: siteImages.party1,
   },
   {
     slug: 'editorial',
@@ -193,8 +185,7 @@ export const packages: Package[] = [
       'Custom styling support',
     ],
     priceFrom: 2_000_000,
-    image:
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80',
+    image: siteImages.editorial1,
   },
   {
     slug: 'private-lesson',
@@ -208,53 +199,49 @@ export const packages: Package[] = [
       'Materi skin prep & finishing',
     ],
     priceFrom: 1_500_000,
-    image:
-      'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80',
+    image: siteImages.wedding4,
   },
   {
-    slug: 'kursus-private',
-    name: 'Private 1-on-1',
-    category: 'kursus',
+    slug: 'photoshoot-look-1',
+    name: 'Look 1',
+    category: 'photoshoot',
     description:
-      'Kelas intensif 4 pertemuan untuk berkarir profesional sebagai MUA (Makeup Artist) handal.',
+      'Makeup & hair untuk satu tema pemotretan — natural glam, flawless, dan photo-ready HD.',
     includes: [
-      'Kurikulum personal dari basic',
-      'Sertifikat kelulusan kelas',
-      'Penyediaan model & alat dibantu',
+      '1 makeup & hair look',
+      'On location standby 2 jam',
+      'Softlens & custom styling',
+    ],
+    priceFrom: 1_800_000,
+    image: siteImages.editorial1,
+  },
+  {
+    slug: 'photoshoot-look-2',
+    name: 'Look 2',
+    category: 'photoshoot',
+    description:
+      'Dua pergantian makeup & hair untuk sesi photoshoot multi-tema atau ganti outfit.',
+    includes: [
+      '2 tema makeup & hair',
+      'Ganti outfit di lokasi',
+      'On location standby 4 jam',
+    ],
+    priceFrom: 3_200_000,
+    image: siteImages.editorial2,
+  },
+  {
+    slug: 'photoshoot-full-session',
+    name: 'Full Session',
+    category: 'photoshoot',
+    description:
+      'Paket photoshoot setengah hari dengan hingga 3 look — ideal untuk content creator, branding, dan portofolio.',
+    includes: [
+      '3 look / tema makeup & hair',
+      'Retouch unlimited selama sesi',
+      'Standby & asisten on location',
     ],
     priceFrom: 4_500_000,
-    image:
-      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80',
-  },
-  {
-    slug: 'kursus-semi',
-    name: 'Semi-Private',
-    category: 'kursus',
-    description:
-      'Kelas belajar makeup bersama dalam kelompok kecil (2-3 orang) dengan bimbingan personal.',
-    includes: [
-      '4 pertemuan materi intensif',
-      'Praktik langsung & evaluasi',
-      'Networking & sertifikat',
-    ],
-    priceFrom: 2_800_000,
-    image:
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',
-  },
-  {
-    slug: 'kursus-basic',
-    name: 'Basic Class',
-    category: 'kursus',
-    description:
-      'Kelas dasar 1 hari untuk mempelajari langkah-langkah dasar makeup harian agar rapi.',
-    includes: [
-      'Skin preparation basic',
-      'Teknik base, eyes, and lips',
-      'Tanya jawab produk favorit',
-    ],
-    priceFrom: 1_200_000,
-    image:
-      'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80',
+    image: siteImages.prewed2,
   },
 ];
 
@@ -271,10 +258,11 @@ export const addons = [
 
 export const categoryLabels: Record<PackageCategory, string> = {
   wedding: 'Wedding',
-  prewedding: 'Prewedding & Engagement',
-  party: 'Party & Event',
+  bride: 'Bride',
+  prewedding: 'Prewedding',
+  party: 'Party',
+  photoshoot: 'Photoshoot',
   other: 'Lainnya',
-  kursus: 'Kursus Makeup',
 };
 
 export function formatRupiah(amount: number) {

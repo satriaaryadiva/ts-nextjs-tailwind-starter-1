@@ -1,15 +1,27 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {},
+
+  // Turbopack — bundler default Next.js 16 (dev + build)
+  turbopack: {
+    // Batasi scan hanya ke folder project (hindari parent lockfile)
+    root: path.join(__dirname),
+  },
 
   images: {
-    remotePatterns: [
+    formats: ['image/webp'],
+  },
+
+  async redirects() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        source: '/kursus',
+        destination: '/photoshoot',
+        permanent: true,
       },
-    ],
+    ];
   },
 };
 
