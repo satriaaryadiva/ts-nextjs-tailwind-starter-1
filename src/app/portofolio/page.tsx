@@ -2,36 +2,43 @@ import type { Metadata } from 'next';
 
 import Gallery from '@/components/portofolio/Gallery';
 import GalleryHero from '@/components/portofolio/GalleryHero';
+import PortfolioStoryIntro from '@/components/portofolio/PortfolioStoryIntro';
 import CtaBanner from '@/components/shared/CtaBanner';
-import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
   title: 'Portofolio',
   description:
-    'Galeri foto & video makeup — wedding, prewedding, party, photoshoot, dan editorial oleh Angelia Beauty MUA.',
+    'Galeri foto & video makeup — wedding, prewedding, sister of bride, party, photoshoot, dan editorial oleh Angelia Beauty MUA.',
 };
 
 export default function PortofolioPage() {
   return (
     <>
-      <PageHero
-        title='Galeri Portofolio'
-        subtitle='Setiap wajah punya cerita — foto & video natural glam, soft, dan photo-ready.'
-      />
+      <PortfolioStoryIntro />
 
-      <GalleryHero />
+      <div className='layout pb-4 pt-12 md:pb-6 md:pt-16'>
+        <GalleryHero />
+      </div>
 
-      <section className='border-t-2 border-black bg-zinc-50 py-12 md:py-16'>
-        <div className='layout mb-6 text-center md:mb-10'>
-          <p className='text-[10px] tracking-[0.28em] text-zinc-400 uppercase'>
-            Koleksi Lengkap
-          </p>
-          <h2 className='font-display mt-2 text-2xl text-black uppercase md:text-4xl'>
-            Semua Karya
-          </h2>
-          <p className='mx-auto mt-3 max-w-lg text-sm text-zinc-500'>
-            Filter kategori · klik untuk preview fullscreen
-          </p>
+      <section
+        id='koleksi'
+        className='scroll-mt-28 border-t-2 border-black bg-gold-pale/50 py-12 md:py-16'
+      >
+        <div className='layout mb-8 md:mb-12'>
+          <div className='flex flex-col gap-4 border-b-2 border-black pb-6 md:flex-row md:items-end md:justify-between'>
+            <div>
+              <p className='text-[10px] tracking-[0.28em] text-gold uppercase'>
+                Chapter II
+              </p>
+              <h2 className='font-display mt-1 text-2xl text-black uppercase md:text-4xl'>
+                Semua <span className='text-gold-light'>Karya</span>
+              </h2>
+            </div>
+            <p className='max-w-md text-sm leading-relaxed text-gold-muted md:text-right'>
+              Filter kategori · klik tile untuk preview fullscreen · navigasi
+              dengan keyboard di lightbox
+            </p>
+          </div>
         </div>
 
         <Gallery mode='full' showFilters />
@@ -39,7 +46,7 @@ export default function PortofolioPage() {
 
       <CtaBanner
         title='Suka salah satu look?'
-        subtitle='Booking sekarang dan ceritakan acaramu.'
+        subtitle='Ceritakan tanggal & acaramu — aku bantu wujudkan look impianmu.'
       />
     </>
   );

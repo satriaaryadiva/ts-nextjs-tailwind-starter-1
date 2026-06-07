@@ -86,7 +86,7 @@ function GalleryCaption({
           compact ? 'p-4 md:p-5' : 'p-4 md:p-6',
         )}
       >
-        <p className='text-[9px] tracking-[0.22em] text-white/60 uppercase md:text-[10px]'>
+        <p className='text-[9px] tracking-[0.22em] text-gold-light/90 uppercase md:text-[10px]'>
           {getCategoryLabel(item.category)}
         </p>
         <p
@@ -97,7 +97,7 @@ function GalleryCaption({
         >
           {item.caption.split(' · ')[0]}
         </p>
-        <p className='mt-1 line-clamp-2 max-h-0 overflow-hidden text-xs text-white/75 opacity-0 transition-all duration-500 group-hover:max-h-10 group-hover:opacity-100'>
+        <p className='mt-1 line-clamp-2 max-h-0 overflow-hidden text-xs text-gold-soft opacity-0 transition-all duration-500 group-hover:max-h-10 group-hover:opacity-100'>
           {item.caption}
         </p>
       </figcaption>
@@ -192,7 +192,7 @@ function Lightbox({
         <X className='h-5 w-5' />
       </button>
 
-      <span className='absolute top-6 left-6 z-60 font-display text-sm tracking-[0.25em] text-white/40 md:text-base'>
+      <span className='absolute top-6 left-6 z-60 font-display text-sm tracking-[0.25em] text-gold-light/70 md:text-base'>
         {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
       </span>
 
@@ -254,7 +254,7 @@ function Lightbox({
         className='absolute right-0 bottom-0 left-0 bg-linear-to-t from-black to-transparent p-6 text-center text-white md:p-10'
         onClick={(e) => e.stopPropagation()}
       >
-        <p className='inline-flex items-center justify-center gap-2 text-xs tracking-[0.25em] text-white/60 uppercase'>
+        <p className='inline-flex items-center justify-center gap-2 text-xs tracking-[0.25em] text-gold-light uppercase'>
           {isPortfolioVideo(item) && <Film size={12} aria-hidden />}
           {getCategoryLabel(item.category)}
         </p>
@@ -281,8 +281,8 @@ function FilterBar({
         className={cn(
           'border px-4 py-2 text-[10px] font-semibold tracking-[0.18em] uppercase transition-colors md:px-5 md:py-2.5 md:text-xs',
           filter === 'all'
-            ? 'border-black bg-black text-white'
-            : 'border-zinc-300 bg-white text-zinc-600 hover:border-black hover:text-black',
+            ? 'border-gold bg-gold text-black'
+            : 'border-gold/35 bg-white text-gold-muted hover:border-gold hover:text-gold',
         )}
       >
         Semua
@@ -295,8 +295,8 @@ function FilterBar({
           className={cn(
             'border px-4 py-2 text-[10px] font-semibold tracking-[0.18em] uppercase transition-colors md:px-5 md:py-2.5 md:text-xs',
             filter === cat.slug
-              ? 'border-black bg-black text-white'
-              : 'border-zinc-300 bg-white text-zinc-600 hover:border-black hover:text-black',
+              ? 'border-gold bg-gold text-black'
+              : 'border-gold/35 bg-white text-gold-muted hover:border-gold hover:text-gold',
           )}
         >
           {cat.label}
@@ -313,13 +313,13 @@ function StatsBar({
 }) {
   return (
     <div className='layout mb-8 flex flex-wrap items-center justify-center gap-2 md:mb-10 md:gap-3'>
-      <span className='border border-zinc-300 px-3 py-1.5 text-[10px] tracking-[0.2em] text-zinc-500 uppercase'>
+      <span className='border border-gold/35 px-3 py-1.5 text-[10px] tracking-[0.2em] text-gold-muted uppercase'>
         {counts.total} Karya
       </span>
-      <span className='border border-black bg-black px-3 py-1.5 text-[10px] tracking-[0.2em] text-white uppercase'>
+      <span className='border border-gold bg-gold px-3 py-1.5 text-[10px] tracking-[0.2em] text-black uppercase'>
         {counts.photo} Foto
       </span>
-      <span className='inline-flex items-center gap-1.5 border border-zinc-300 px-3 py-1.5 text-[10px] tracking-[0.2em] text-zinc-600 uppercase'>
+      <span className='inline-flex items-center gap-1.5 border border-gold/35 px-3 py-1.5 text-[10px] tracking-[0.2em] text-gold-muted uppercase'>
         <Film size={11} aria-hidden />
         {counts.video} Video
       </span>
@@ -406,7 +406,7 @@ export default function Gallery({
       )}
 
       {filtered.length === 0 && (
-        <p className='layout pb-20 text-center text-sm text-zinc-500'>
+        <p className='layout pb-20 text-center text-sm text-gold-muted'>
           Belum ada karya di kategori ini.
         </p>
       )}

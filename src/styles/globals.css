@@ -12,7 +12,11 @@
   --color-charcoal-light: #404040;
   --color-rose: #000000;
   --color-rose-dark: #000000;
-  --color-gold: #000000;
+  --color-gold: #b8860b;
+  --color-gold-light: #d4af37;
+  --color-gold-muted: #9a7340;
+  --color-gold-pale: #f7f0e3;
+  --color-gold-soft: #c9a962;
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-fade-up: fade-up 0.6s ease-out forwards;
