@@ -4,8 +4,9 @@ export type PortfolioCategory =
   | 'wedding'
   | 'prewedding'
   | 'party'
+  | 'photoshoot'
   | 'editorial'
-  | 'photoshoot';
+  | 'sister-of-bride';
 
 export type PortfolioItem = {
   id: string;
@@ -20,6 +21,7 @@ export type PortfolioItem = {
 export const portfolioCategories: { slug: PortfolioCategory; label: string }[] =
   [
     { slug: 'wedding', label: 'Wedding' },
+    { slug: 'sister-of-bride', label: 'Sister of Bride' },
     { slug: 'prewedding', label: 'Prewedding' },
     { slug: 'party', label: 'Party' },
     { slug: 'photoshoot', label: 'Photoshoot' },
@@ -34,6 +36,24 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'photoshoot',
     caption: 'Photoshoot session · Natural glam',
     type: 'video',
+    featured: true,
+  },
+  {
+    id: 'v-sister-bride',
+    src: siteImages.videos.sisterOfBride,
+    alt: 'Video sister of bride — Angelia Beauty MUA',
+    category: 'sister-of-bride',
+    caption: 'Sister of Bride · Soft glam · Medan',
+    type: 'video',
+    featured: true,
+  },
+  {
+    id: 'sob-1',
+    src: siteImages.sisterOfBride,
+    alt: 'Rias sister of bride kebaya — Angelia Beauty MUA',
+    category: 'sister-of-bride',
+    caption: 'Sister of Bride · Kebaya look · Medan',
+    type: 'image',
     featured: true,
   },
   {

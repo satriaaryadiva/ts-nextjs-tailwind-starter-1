@@ -24,6 +24,8 @@ export const siteImages = {
   natural2: '/images/natural-glam-2.webp',
   naturalCollage: '/images/natural-collage.webp',
 
+  sisterOfBride: '/images/IMG_1761.JPG.jpeg',
+
   video: '/video/preview.mp4',
   video2: '/video/whyme.mp4',
   videos: {
@@ -31,6 +33,7 @@ export const siteImages = {
     whyMe: '/video/whyme.mp4',
     photoshoot: '/video/photoshoot.webm',
     behind: '/video/behind.mp4',
+    sisterOfBride: '/video/IMG_1755.MOV',
   },
   services: {
     wedding: '/images/IMG_1037.webp',
