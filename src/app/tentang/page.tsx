@@ -6,6 +6,7 @@ import PageHero from '@/components/shared/PageHero';
 import Button from '@/components/ui/Button';
 import { siteConfig } from '@/constant/config';
 import { siteImages } from '@/data/images';
+import { pageHeroImages } from '@/data/pageHeroImages';
 
 export const metadata: Metadata = {
   title: 'Tentang',

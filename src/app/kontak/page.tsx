@@ -15,6 +15,7 @@ import PageHero from '@/components/shared/PageHero';
 import Button from '@/components/ui/Button';
 import { siteConfig } from '@/constant/config';
 import { siteImages } from '@/data/images';
+import { pageHeroImages } from '@/data/pageHeroImages';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -142,8 +143,12 @@ export default function KontakPage() {
   return (
     <>
       <PageHero
+        eyebrow='Kontak'
         title='Hubungi Kami'
         subtitle='Respon cepat via WhatsApp — atau pilih channel lain untuk konsultasi dan booking.'
+        image={pageHeroImages.kontak.src}
+        imageAlt={pageHeroImages.kontak.alt}
+        align='left'
       />
 
       {/* WhatsApp hero + editorial image */}
